@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Die : Node
+public class Die : ShopaholicBTLeaf
 {
     public override NodeState ParticularTick(Tick tick)
     {
-        return NodeState.ERROR;
+        _shopaholic.Die();
+        return NodeState.SUCCESS;
     }
 }

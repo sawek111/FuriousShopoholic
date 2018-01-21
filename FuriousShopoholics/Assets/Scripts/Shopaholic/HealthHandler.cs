@@ -6,6 +6,7 @@ public class HealthHandler : IInitializable
     private Settings _settings;
 
     private int _healthPoints;
+    private bool _dead = false;
 
     public HealthHandler(Settings settings)
     {
@@ -23,6 +24,19 @@ public class HealthHandler : IInitializable
     {
         _healthPoints -= healthPoints;
         return;
+    }
+
+    public void Die()
+    {
+        _dead = true;
+    }
+
+    /// <summary>
+    /// Has been dying called already
+    /// </summary>
+    public bool IsDead()
+    {
+        return _dead;
     }
 
     public bool HasHealthPoints()

@@ -23,8 +23,8 @@ public class BehaviorHandler : IInitializable
         _board = new BlackBoard();
         Node root = new PriorityNode(
             new SequenceNode(
-                 new HasNoHealthPoints()
-
+                 new HasNoHealthPoints(),
+                 new Die()
                 ),
             new SequenceNode(
                 ),
