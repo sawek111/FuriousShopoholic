@@ -22,6 +22,24 @@ public class Shopaholic : MonoBehaviour
         return;
     }
 
+    public bool CanSeePlayer()
+    {
+        //TODO implement
+        return false;
+    }
+
+#region HealthHandler
+
+    public int GetHealthPoints()
+    {
+        return _healthHandler.HealthPoints;
+    }
+
+    public int GetMaxHealthPoints()
+    {
+        return _healthHandler.MaxHealthPoints;
+    }
+
     public void Die()
     {
         if (!_healthHandler.IsDead())
@@ -37,6 +55,8 @@ public class Shopaholic : MonoBehaviour
     {
         return _healthHandler.HasHealthPoints();
     }
+
+#endregion
 
     void OnValidate()
     {

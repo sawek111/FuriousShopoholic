@@ -27,9 +27,44 @@ public class BehaviorHandler : IInitializable
                  new Die()
                 ),
             new SequenceNode(
+                new CanSeePlayer(),
+                new PriorityNode(
+                    new SequenceNode(
+                        new IsHealthy(),
+                        new PriorityNode(
+                            new SequenceNode(
+                                //IsCloseToPlayer(),
+                                new PriorityNode(
+                                    new SequenceNode(
+                                        //IsSuffering?
+                                        //Agony,
+                                        //SufferHP
+                                        )
+                                    //,Attack()
+                                    )
+                                ),
+                            new SequenceNode(
+                                //FollowPlayer
+                                //CanSeeOtherAI?
+                                //CallAI
+                                )
+                            )
+                        ),
+                    new MemSequnceNode(
+                        //Escape
+                        //Gather + on done regenerate health
+                        //ReturnOnPlace
+                        )
+                    )
                 ),
             new SequenceNode(
-
+                new PriorityNode(
+                    new SequenceNode(
+                        //IsCalled,
+                        //Follow calling
+                        )
+                        //,Idle()
+                    )
                 )
             );
 

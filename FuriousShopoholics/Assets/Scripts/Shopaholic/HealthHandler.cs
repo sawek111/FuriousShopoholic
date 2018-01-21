@@ -8,6 +8,16 @@ public class HealthHandler : IInitializable
     private int _healthPoints;
     private bool _dead = false;
 
+    public int HealthPoints
+    {
+        get { return _healthPoints; }
+    }
+
+    public int MaxHealthPoints
+    {
+        get { return _settings.MaxHealthPoints; }
+    }
+
     public HealthHandler(Settings settings)
     {
         _settings = settings;
