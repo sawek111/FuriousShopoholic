@@ -23,11 +23,47 @@ public class ShopaholicsManager : ITickable, IFixedTickable, IInitializable
     public void Initialize()
     {
         CreateStartShopaholics(_settings.ShopaholicsStartPool);
-      
+        return;
     }
 
     public void Tick()
     {
+    }
+
+    public Shopaholic GetVisibleForShopaholic(Shopaholic shopaholic)
+    {
+        for(int i = 0; i < _shopaholics.Count; i++)
+        {
+            if(_shopaholics[i] == shopaholic)
+            {
+                continue;
+            }
+            if( Mathf.Abs( (_shopaholics[i].transform.position - shopaholic.transform.position).magnitude) < 15.5f && !_shopaholics[i].GetFollowedShopaholic() != shopaholic)
+            {
+                return _shopaholics[i];
+            }
+        }
+
+        return null;
+    }
+
+
+    public int GetFollowing(Shopaholic shopaholic)
+    {
+        int count = 0;
+        for (int i = 0; i < _shopaholics.Count; i++)
+        {
+            if (_shopaholics[i] == shopaholic)
+            {
+                continue;
+            }
+            if (Mathf.Abs((_shopaholics[i].transform.position - shopaholic.transform.position).magnitude) < 15.5f && !_shopaholics[i].GetFollowedShopaholic() != shopaholic)
+            {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     public void FixedTick()
@@ -39,7 +75,10 @@ public class ShopaholicsManager : ITickable, IFixedTickable, IInitializable
     {
         for (int i = 0; i < _shopaholics.Count; i++)
         {
-            _shopaholics[i].Tick();
+            if (!_shopaholics[i].IsDead())
+            {
+                _shopaholics[i].Tick();
+            }
         }
 
         return;

@@ -12,6 +12,7 @@ public class ShopaholicInstaller : MonoInstaller<ShopaholicInstaller>
         Container.Bind<Navigator>().AsSingle().WithArguments(_settings.NavigatorSettings, _settings.NavMeshAgent, _settings.Transform);
         Container.BindInterfacesAndSelfTo<HealthHandler>().AsSingle().WithArguments(_settings.HealthSettings);
         Container.BindInterfacesAndSelfTo<AnimatorHandler>().AsSingle().WithArguments(_settings.Animator);
+        Container.BindInterfacesAndSelfTo<BehaviorHandler>().AsSingle().NonLazy();
 
         return;
     }

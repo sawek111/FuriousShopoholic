@@ -21,14 +21,32 @@ public class AnimatorHandler : IInitializable
         return;
     }
 
+    public bool IsState(ShopaholicAnimations animation)
+    {
+        return _animator.GetBool(animation.ToString());
+    }
+
+    public float GetAnimationProgress()
+    {
+        AnimatorStateInfo info = _animator.GetCurrentAnimatorStateInfo(0);
+        return info.normalizedTime;
+    }
+
+    public void StopAnimations()
+    {
+        foreach (AnimatorControllerParameter parameter in _animatorParameteres)
+        {
+            _animator.SetBool(parameter.name, false);
+        }
+
+        return;
+    }
+
     public void SetAnimation(ShopaholicAnimations animation, bool stopOthers = false)
     {
         if(stopOthers)
         {
-            foreach (AnimatorControllerParameter parameter in _animatorParameteres)
-            {
-                _animator.SetBool(parameter.name, false);
-            }
+            StopAnimations();
         }
         _animator.SetBool(animation.ToString(), true);
 

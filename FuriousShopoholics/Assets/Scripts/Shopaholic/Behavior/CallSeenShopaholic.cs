@@ -1,16 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using Zenject;
 
-public class CallSeenShopaholic : MonoBehaviour {
+public class CallSeenShopaholic : ShopaholicBTLeaf
+{
+    private ShopaholicsManager _shopaholicsManager;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [Inject]
+    public void Construct(ShopaholicsManager shopaholicsManager)
+    {
+        _shopaholicsManager = shopaholicsManager;
+        return;
+    }
+
+    public override NodeState ParticularTick(Tick tick)
+    {
+        Shopaholic visble = _shopaholicsManager.GetVisibleForShopaholic(_shopaholic);
+        if (visble != null)
+        {
+            visble.BeCalled(_shopaholic);
+            return NodeState.SUCCESS;
+        }
+
+        return NodeState.FAILURE;
+    }
 }

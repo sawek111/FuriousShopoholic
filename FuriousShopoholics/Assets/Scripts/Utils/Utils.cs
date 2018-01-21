@@ -34,4 +34,14 @@ public static class Utils
         }
     }
 
+    public static Vector3 GetVector(float x, float y, float z)
+    {
+        Vector3 vector = Vector3.zero;
+        vector.x = x;
+        vector.y = y;
+        vector.z = z;
+
+        return vector;
+    }
+
 }

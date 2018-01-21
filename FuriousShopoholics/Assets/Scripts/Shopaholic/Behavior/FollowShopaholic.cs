@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowShopaholic : MonoBehaviour {
+public class FollowShopaholic : ShopaholicBTLeaf
+{
+    public override NodeState ParticularTick(Tick tick)
+    {
+        Shopaholic followed = _shopaholic.GetFollowedShopaholic();
+        if(followed != null)
+        {
+            _shopaholic.RunTowards(followed.transform);
+            if(_shopaholic.GetRemainingDistance() <= 0.7f)
+            {
+                return NodeState.FAILURE;
+            }
+            return NodeState.SUCCESS;
+        }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        return NodeState.ERROR;
+    }
 }

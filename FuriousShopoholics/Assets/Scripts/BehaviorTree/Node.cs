@@ -32,7 +32,7 @@ public abstract class Node
     public NodeState Execute(Tick tick)
     {
         Enter(tick);
-        if (!((bool)tick.Board.GetValue("isOpen", _id)))
+        if ( tick.Board.GetValue("isOpen", _id) != null &&  !((bool)tick.Board.GetValue("isOpen", _id)))
         {
             Open(tick);
         }

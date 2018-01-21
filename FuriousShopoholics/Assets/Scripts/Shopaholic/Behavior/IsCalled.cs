@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IsCalled : MonoBehaviour {
+public class IsCalled : ShopaholicBTLeaf
+{
+    public override NodeState ParticularTick(Tick tick)
+    {
+        if(_shopaholic.GetFollowedShopaholic() != null)
+        {
+            if (!_shopaholic.GetFollowedShopaholic().IsDead())
+            {
+                return NodeState.SUCCESS;
+            }
+        }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        return NodeState.FAILURE;
+    }
+
 }

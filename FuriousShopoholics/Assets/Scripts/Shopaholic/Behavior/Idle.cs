@@ -2,15 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Idle : MonoBehaviour {
+public class Idle : ShopaholicBTLeaf
+{
+    public override NodeState ParticularTick(Tick tick)
+    {
+        _shopaholic.Idle();
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        return NodeState.SUCCESS;
+    }
 }

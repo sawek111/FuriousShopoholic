@@ -9,7 +9,6 @@ public class GameplayInstaller : MonoInstaller<GameplayInstaller>
     public override void InstallBindings()
     {
         Container.BindMemoryPool<Shopaholic, Shopaholic.Pool>()
-        .WithInitialSize(5)
         .FromSubContainerResolve()
         .ByNewPrefab(_settings.ShopaholicPrefab)
         .UnderTransformGroup("Shopaholics");

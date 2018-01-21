@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FollowPlayer : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+public class FollowPlayer : ShopaholicBTLeaf
+{
+    public override NodeState ParticularTick(Tick tick)
+    {
+        _shopaholic.FollowPlayer();
+        return NodeState.SUCCESS;
+    }
 }

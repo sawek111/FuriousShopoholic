@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Escape : MonoBehaviour {
+public class Escape : ShopaholicBTLeaf
+{
+    public override NodeState ParticularTick(Tick tick)
+    {
+        if(_shopaholic.GetRemainingDistance() < 3.0f)
+        {
+            if(_shopaholic.IsFarFromPlayer())
+            {
+                return NodeState.SUCCESS;
+            }
+            _shopaholic.MoveRandomly();
+        }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+        return NodeState.RUNNING;
+    }
 }
