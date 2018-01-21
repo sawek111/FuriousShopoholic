@@ -6,6 +6,7 @@ public class BehaviorHandler : IInitializable
     private BehaviorTree _tree = null;
     private BlackBoard _board = null;
 
+
     [Inject]
     public BehaviorHandler()
     {
@@ -14,9 +15,18 @@ public class BehaviorHandler : IInitializable
 
     public void Initialize()
     {
-        throw new System.NotImplementedException();
+        CreateTree();
     }
 
+    public void OnUpdate()
+    {
+
+    }
+
+    public void FixedTick()
+    {
+        throw new System.NotImplementedException();
+    }
 
     private void CreateTree()
     {

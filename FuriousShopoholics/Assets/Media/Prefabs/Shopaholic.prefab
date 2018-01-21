@@ -744,6 +744,7 @@ GameObject:
   - component: {fileID: 114173250915728264}
   - component: {fileID: 114753022734037684}
   - component: {fileID: 114372590277674716}
+  - component: {fileID: 114619855897728670}
   m_Layer: 0
   m_Name: Shopaholic
   m_TagString: Untagged
@@ -2774,11 +2775,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settings:
-    _navMeshAgent: {fileID: 195496868056626008}
-    _transform: {fileID: 4400039570611168}
-    _animator: {fileID: 95931320541637684}
-    _healthSettings:
-      MaxHealthPoints: 100
+    NavMeshAgent: {fileID: 195496868056626008}
+    Transform: {fileID: 4400039570611168}
+    Animator: {fileID: 95931320541637684}
+    HealthSettings:
+      MaxHealthPoints: 0
+    NavigatorSettings:
+      DetectionDistance: 20
+      CloseDistance: 0
+      DetectionAngle: 20
 --- !u!114 &114372590277674716
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2790,6 +2795,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f24d540e63ce46647b8a35ccebad87f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114619855897728670
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515603725673892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0166d8ff8d905b048b2448179e1f5d11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _components:
+  - {fileID: 114372590277674716}
+  _identifier: 
+  _context: {fileID: 0}
+  _bindType: 0
 --- !u!114 &114753022734037684
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -14,3 +14,8 @@ MonoBehaviour:
   menuSettings:
     _menuPanelPrefab: {fileID: 1896377090196238, guid: 812663db27c2f7546bed651b0f86c87b,
       type: 2}
+  gameplaySettings:
+    ShopaholicPrefab: {fileID: 1515603725673892, guid: 9efbed0bab076d14291fea9912e448f9,
+      type: 2}
+    ShopaholicsManagerSettings:
+      ShopaholicsStartPool: 10
