@@ -2755,7 +2755,7 @@ Animator:
   m_GameObject: {fileID: 1658472022478694}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 393fa23482ce51d42a57310c2608ae54, type: 3}
-  m_Controller: {fileID: 9100000, guid: ee3ad5eac9349484aa733e98ccf1aa71, type: 2}
+  m_Controller: {fileID: 9100000, guid: 628ebdeb879ff484784ad53b5531886b, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2779,10 +2779,10 @@ MonoBehaviour:
     Transform: {fileID: 4400039570611168}
     Animator: {fileID: 95931320541637684}
     HealthSettings:
-      MaxHealthPoints: 0
+      MaxHealthPoints: 100
     NavigatorSettings:
       DetectionDistance: 20
-      CloseDistance: 0
+      CloseDistance: 0.5
       DetectionAngle: 20
 --- !u!114 &114372590277674716
 MonoBehaviour:
@@ -3115,7 +3115,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
