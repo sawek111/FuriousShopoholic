@@ -101,6 +101,7 @@ public class Navigator
     {
         _meshAgent.SetDestination(_player.GetMovingTransform().position);
         _playerLastPosition = _player.GetMovingTransform().position;
+        _shopaholicToFollow = null;
 
         return;
     }

@@ -8,9 +8,11 @@ public class CallSeenShopaholic : ShopaholicBTLeaf
         Shopaholic visble = _shopaholic.NewVisible;
         if (visble != null)
         {
-            Debug.Log("BeCalled()");
-            visble.BeCalled(_shopaholic);
-            return NodeState.SUCCESS;
+            if(visble.GetFollowedShopaholic() == null || visble.GetFollowedShopaholic().IsDead())
+            {
+                visble.BeCalled(_shopaholic);
+                return NodeState.SUCCESS;
+            }
         }
 
         return NodeState.FAILURE;
