@@ -1,19 +1,11 @@
 ﻿using Zenject;
+using UnityEngine;
 
 public class CanSeeOtherShopaholic : ShopaholicBTLeaf
 {
-    private ShopaholicsManager _shopaholicsManager = null;
-
-    [Inject]
-    public void Construct(ShopaholicsManager shopaholicsManager)
-    {
-        _shopaholicsManager = shopaholicsManager;
-        return;
-    }
-
     public override NodeState ParticularTick(Tick tick)
     {
-        Shopaholic visble = _shopaholicsManager.GetVisibleForShopaholic(_shopaholic);
+        Shopaholic visble = _shopaholic.NewVisible;
         if(visble != null)
         {
             return NodeState.SUCCESS;

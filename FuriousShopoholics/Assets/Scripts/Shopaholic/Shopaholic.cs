@@ -12,6 +12,9 @@ public class Shopaholic : MonoBehaviour
 
     private Player _player = null;
 
+    private Shopaholic _newVisible = null;
+    private int _followingCount = 0;
+
     [Inject]
     public void Construct(Navigator navigator, HealthHandler healthHandler, BehaviorHandler behaviorHandler, Player player)
     {
@@ -21,6 +24,18 @@ public class Shopaholic : MonoBehaviour
         _player = player;
 
         return;
+    }
+
+    public Shopaholic NewVisible
+    {
+        get { return _newVisible; }
+        set { _newVisible = value; }
+    }
+
+    public int FollowingCount
+    {
+        get { return _followingCount; }
+        set { _followingCount = value; }
     }
 
     public void Tick()

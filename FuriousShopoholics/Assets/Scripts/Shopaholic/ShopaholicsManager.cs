@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class ShopaholicsManager : ITickable, IFixedTickable, IInitializable
+public class ShopaholicsManager : IFixedTickable, IInitializable
 {
     private Settings _settings = null;
     private Shopaholic.Pool _pool = null;
@@ -24,10 +24,6 @@ public class ShopaholicsManager : ITickable, IFixedTickable, IInitializable
     {
         CreateStartShopaholics(_settings.ShopaholicsStartPool);
         return;
-    }
-
-    public void Tick()
-    {
     }
 
     public Shopaholic GetVisibleForShopaholic(Shopaholic shopaholic)
@@ -78,6 +74,8 @@ public class ShopaholicsManager : ITickable, IFixedTickable, IInitializable
             if (!_shopaholics[i].IsDead())
             {
                 _shopaholics[i].Tick();
+                _shopaholics[i].NewVisible = GetVisibleForShopaholic((_shopaholics[i]));
+                _shopaholics[i].FollowingCount = GetFollowing(_shopaholics[i]);
             }
         }
 
