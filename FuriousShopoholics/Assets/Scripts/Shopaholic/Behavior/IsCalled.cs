@@ -6,15 +6,12 @@ public class IsCalled : ShopaholicBTLeaf
 {
     public override NodeState ParticularTick(Tick tick)
     {
-        if(_shopaholic.GetFollowedShopaholic() != null)
+        if(_shopaholic.GetFollowedShopaholic() == null || _shopaholic.GetFollowedShopaholic().IsDead())
         {
-            if (!_shopaholic.GetFollowedShopaholic().IsDead())
-            {
-                return NodeState.SUCCESS;
-            }
+            return NodeState.FAILURE;
         }
 
-        return NodeState.FAILURE;
+        return NodeState.SUCCESS;
     }
 
 }

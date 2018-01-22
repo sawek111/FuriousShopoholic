@@ -1,21 +1,14 @@
-﻿using Zenject;
+﻿using UnityEngine;
+using Zenject;
 
 public class CallSeenShopaholic : ShopaholicBTLeaf
 {
-    private ShopaholicsManager _shopaholicsManager;
-
-    [Inject]
-    public void Construct(ShopaholicsManager shopaholicsManager)
-    {
-        _shopaholicsManager = shopaholicsManager;
-        return;
-    }
-
     public override NodeState ParticularTick(Tick tick)
     {
-        Shopaholic visble = _shopaholicsManager.GetVisibleForShopaholic(_shopaholic);
+        Shopaholic visble = _shopaholic.NewVisible;
         if (visble != null)
         {
+            Debug.Log("BeCalled()");
             visble.BeCalled(_shopaholic);
             return NodeState.SUCCESS;
         }

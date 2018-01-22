@@ -8,7 +8,7 @@ public class AttackPlayer : ShopaholicBTLeaf
 
     public override NodeState ParticularTick(Tick tick)
     {
-        if(_shopaholic.IsAttacking())
+        if (_shopaholic.IsAttacking())
         {
             if(_shopaholic.GetAttackProgress() > 0.9f  && !playerPunched)
             {

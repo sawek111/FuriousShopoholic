@@ -8,9 +8,11 @@ public class CanSeePlayer : ShopaholicBTLeaf
     {
         if(_shopaholic.CanSeePlayer())
         {
+            Debug.Log("Can see player");
             return NodeState.SUCCESS;
-        }
 
+        }
+        Debug.Log("Can't see player");
         return NodeState.FAILURE;
     }
 }

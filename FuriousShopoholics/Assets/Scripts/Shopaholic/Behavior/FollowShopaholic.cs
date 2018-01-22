@@ -9,7 +9,7 @@ public class FollowShopaholic : ShopaholicBTLeaf
         Shopaholic followed = _shopaholic.GetFollowedShopaholic();
         if(followed != null)
         {
-            _shopaholic.RunTowards(followed.transform);
+            _shopaholic.RunTowards(followed.Transform);
             if(_shopaholic.GetRemainingDistance() <= 0.7f)
             {
                 return NodeState.FAILURE;

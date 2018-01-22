@@ -1,21 +1,13 @@
-﻿using Zenject;
+﻿using UnityEngine;
 
 public class GatherShopaholics : ShopaholicBTLeaf
 {
-    private ShopaholicsManager _shopaholicsManager;
-
-    [Inject]
-    public void Construct(ShopaholicsManager shopaholicsManager)
-    {
-        _shopaholicsManager = shopaholicsManager;
-        return;
-    }
-
     public override NodeState ParticularTick(Tick tick)
     {
-        if(_shopaholicsManager.GetFollowing(_shopaholic) >= 3)
+        if(_shopaholic.FollowingCount >= 3)
         {
             _shopaholic.RegenerateHealth();
+            Debug.Log("Team completed");
             return NodeState.SUCCESS;
         }
 
@@ -24,12 +16,13 @@ public class GatherShopaholics : ShopaholicBTLeaf
             _shopaholic.MoveRandomly();
         }
 
-        Shopaholic visble = _shopaholicsManager.GetVisibleForShopaholic(_shopaholic);
+        Shopaholic visble = _shopaholic.NewVisible;
         if (visble != null)
         {
             visble.BeCalled(_shopaholic);
+            Debug.Log("New found completed");
         }
-
+        Debug.Log("Still Gathering");
         return NodeState.RUNNING;
     }
 
