@@ -37,7 +37,7 @@ public class BehaviorHandler : IInitializable
 
     public void FeelAgony()
     {
-        _animatorHandler.SetAnimation(ShopaholicAnimations.Agony, true);
+        _animatorHandler.SetAnimation(ShopaholicAnimations.Agony);
         return;
     }
 
@@ -49,13 +49,13 @@ public class BehaviorHandler : IInitializable
 
     public void Run()
     {
-        _animatorHandler.SetAnimation(ShopaholicAnimations.Running, true);
+        _animatorHandler.SetAnimation(ShopaholicAnimations.Running,true);
         return;
     }
 
     public void AttackPlayer()
     {
-        _animatorHandler.SetAnimation(ShopaholicAnimations.Attack);
+        _animatorHandler.SetAnimation(ShopaholicAnimations.Attack, true);
     }
 
     public bool IsAttacking()
@@ -83,45 +83,45 @@ public class BehaviorHandler : IInitializable
                  new Die()
                 ),
             new SequenceNode(
-                new CanSeePlayer(),
-                new PriorityNode(
-                    new SequenceNode(
-                        new IsHealthy(),
-                        new PriorityNode(
-                            new SequenceNode(
-                               new IsClosePlayer(),
-                                new PriorityNode(
-                                    new SequenceNode(
-                                        new IsSuffering(),
-                                        new FeelAgony()
-                                        ),
-                                     new AttackPlayer()
-                                    )
-                                ),
-                            new SequenceNode(
-                                 new FollowPlayer(),
-                                 new CanSeeOtherShopaholic(),
-                                 new CallSeenShopaholic()
-                                )
-                            )
-                        ),
-                    new MemSequnceNode(
+                 new IsClosePlayer(),
+                 new IsSuffering(),
+                 new FeelAgony()
+                 ),
+            new SequenceNode(
+                  new IsNotHealthy(),
+                  new MemSequnceNode(
                         new Escape(),
                         new GatherShopaholics(),
                         new ReturnOnLastPlaceWherePlayerSeen()
                         )
+                 ),
+
+            new PriorityNode(
+                new SequenceNode(
+                    new CanSeePlayer(),
+                    new PriorityNode(
+                        new SequenceNode(
+                            new IsClosePlayer(),
+                            new AttackPlayer()
+                        ),
+                        new SequenceNode(
+                            new FollowPlayer(),
+                            new CanSeeOtherShopaholic(),
+                            new CallSeenShopaholic()
+                        )
                     )
                 ),
-            new SequenceNode(
-                new PriorityNode(
-                    new SequenceNode(
-                        new IsCalled(),
-                        new FollowShopaholic()
-                        ),
-                        new Idle()
+                new SequenceNode(
+                    new PriorityNode(
+                        new SequenceNode(
+                            new IsCalled(),
+                            new FollowShopaholic()
+                         ),
+                         new Idle()
                     )
                 )
-            );
+            )
+        );
 
         _tree = new BehaviorTree(root);
     }

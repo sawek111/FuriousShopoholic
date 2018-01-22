@@ -28,6 +28,11 @@ public class Navigator
         return;
     }
 
+    public Transform Transform
+    {
+        get { return _transform; }
+    }
+
     public Shopaholic GetFollowedShopaholic()
     {
         return _shopaholicToFollow;
@@ -66,11 +71,11 @@ public class Navigator
 
     public bool IsClosePlayer()
     {
-        return _settings.CloseDistance >= Mathf.Abs((_player.GetMovingTransform().position - _transform.position).magnitude);
+        return ( Mathf.Abs((_player.GetMovingTransform().position - _transform.position).magnitude) <= _settings.CloseDistance);
     }
 
     public bool IsFarFromPlayer()
-    {
+    { 
         return Mathf.Abs((_player.GetMovingTransform().position - _transform.position).magnitude) >= _settings.DetectionDistance;
     }
 
@@ -79,8 +84,11 @@ public class Navigator
         Vector3 front = _transform.forward;
         Vector3 playerPos = _player.GetMovingTransform().position;
         float angle = Vector3.Angle(front, playerPos);
-        float distance = Mathf.Abs((playerPos - _transform.position).magnitude);
-
+        float distance = Mathf.Abs((playerPos - _transform.position).sqrMagnitude);
+        if(distance < _settings.SmellDistance)
+        {
+            return true;
+        }
         if(distance < _settings.DetectionDistance && angle < _settings.DetectionAngle)
         {
             return true;
@@ -101,6 +109,7 @@ public class Navigator
     public class Settings
     {
         public int DetectionDistance;
+        public float SmellDistance;
         public float CloseDistance;
         public float DetectionAngle;
     }

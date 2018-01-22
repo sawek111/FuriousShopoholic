@@ -1,23 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
-public class AnimatorHandler : IInitializable
+public class AnimatorHandler
 {
     private Animator _animator = null;
-    private AnimatorControllerParameter[] _animatorParameteres = null;
 
     [Inject]
     public AnimatorHandler(Animator animator)
     {
         _animator = animator;
-        return;
-    }
-
-    public void Initialize()
-    {
-        _animatorParameteres = _animator.parameters;
         return;
     }
 
@@ -34,9 +28,9 @@ public class AnimatorHandler : IInitializable
 
     public void StopAnimations()
     {
-        foreach (AnimatorControllerParameter parameter in _animatorParameteres)
+        for(int i = 0; i < Enum.GetNames(typeof(ShopaholicAnimations)).Length; i++)
         {
-            _animator.SetBool(parameter.name, false);
+            _animator.SetBool(((ShopaholicAnimations)i).ToString(), false);
         }
 
         return;

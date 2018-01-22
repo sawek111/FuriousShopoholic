@@ -38,6 +38,11 @@ public class Shopaholic : MonoBehaviour
         set { _followingCount = value; }
     }
 
+    public Transform Transform
+    {
+        get { return _navigator.Transform; }
+    }
+
     public void Tick()
     {
         _behaviorHandler.Tick(this);
@@ -75,6 +80,7 @@ public class Shopaholic : MonoBehaviour
     public void BeCalled(Shopaholic callingShopaholic)
     {
         _navigator.BeCalled(callingShopaholic);
+        _behaviorHandler.Run();
         return;
     }
 
@@ -172,6 +178,7 @@ public class Shopaholic : MonoBehaviour
     {
         if (!_healthHandler.IsDead())
         {
+            Debug.LogWarning("Die()");
             _healthHandler.Die();
             _behaviorHandler.Die();
         }
