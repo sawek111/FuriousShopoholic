@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 public class ShopaholicsManager : IFixedTickable, IInitializable
@@ -26,6 +27,14 @@ public class ShopaholicsManager : IFixedTickable, IInitializable
         return;
     }
 
+    public void FixedTick()
+    {
+        UpdateShopaholics();
+        CheckGameOver();
+
+        return;
+    }
+
     public Shopaholic GetVisibleForShopaholic(Shopaholic shopaholic)
     {
         for(int i = 0; i < _shopaholics.Count; i++)
@@ -34,7 +43,7 @@ public class ShopaholicsManager : IFixedTickable, IInitializable
             {
                 continue;
             }
-            if( Mathf.Abs( (_shopaholics[i].transform.position - shopaholic.transform.position).magnitude) < 15.5f && !_shopaholics[i].GetFollowedShopaholic() != shopaholic)
+            if ( Mathf.Abs( (_shopaholics[i].Transform.position - shopaholic.Transform.position).magnitude) < 15.5f && _shopaholics[i].GetFollowedShopaholic() != shopaholic)
             {
                 return _shopaholics[i];
             }
@@ -53,7 +62,7 @@ public class ShopaholicsManager : IFixedTickable, IInitializable
             {
                 continue;
             }
-            if (Mathf.Abs((_shopaholics[i].transform.position - shopaholic.transform.position).magnitude) < 15.5f && !_shopaholics[i].GetFollowedShopaholic() != shopaholic)
+            if (Mathf.Abs((_shopaholics[i].Transform.position - shopaholic.Transform.position).magnitude) < 15.5f && !_shopaholics[i].GetFollowedShopaholic() != shopaholic)
             {
                 count++;
             }
@@ -62,9 +71,27 @@ public class ShopaholicsManager : IFixedTickable, IInitializable
         return count;
     }
 
-    public void FixedTick()
+    private void CheckGameOver()
     {
-        UpdateShopaholics();
+        if(!IsAnyoneLive())
+        {
+            SceneManager.LoadScene("Menu");
+        }
+
+        return;
+    }
+
+    private bool IsAnyoneLive()
+    {
+        for(int i = 0; i < _shopaholics.Count; i++)
+        {
+            if(!_shopaholics[i].IsDead())
+            {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     private void UpdateShopaholics()
@@ -75,7 +102,7 @@ public class ShopaholicsManager : IFixedTickable, IInitializable
             {
                 _shopaholics[i].Tick();
                 _shopaholics[i].NewVisible = GetVisibleForShopaholic((_shopaholics[i]));
-                _shopaholics[i].FollowingCount = GetFollowing(_shopaholics[i]);
+                 _shopaholics[i].FollowingCount = GetFollowing(_shopaholics[i]);
             }
         }
 
@@ -87,6 +114,7 @@ public class ShopaholicsManager : IFixedTickable, IInitializable
         for (int i = 0; i < count; i++)
         {
             Shopaholic shopaholic = _pool.Spawn();
+            shopaholic.Transform.position = Utils.GetRandomPositionOnMap();
             _shopaholics.Add(shopaholic);
         }
 
