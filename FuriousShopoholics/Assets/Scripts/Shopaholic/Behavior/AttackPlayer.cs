@@ -4,25 +4,22 @@ using UnityEngine;
 
 public class AttackPlayer : ShopaholicBTLeaf
 {
-    private bool playerPunched = false;
+    private float _timer = 0.0f;
 
     public override NodeState ParticularTick(Tick tick)
     {
-        if (_shopaholic.IsAttacking())
+        _shopaholic.AttackPlayer();
+        _timer += Time.fixedDeltaTime;
+        if(_timer > 1.0f)
         {
-            if(_shopaholic.GetAttackProgress() > 0.9f  && !playerPunched)
+            if(_shopaholic.GetAttackProgress() > 0.2f)
             {
                 _shopaholic.PunchPlayer();
-                playerPunched = true;
-                Debug.LogError("Punched");
+                Debug.LogWarning("Punch");
             }
-            _shopaholic.AttackPlayer();
-            return NodeState.SUCCESS;
+            _timer = 0.0f;
         }
-
-        _shopaholic.AttackPlayer();
-        playerPunched = false;
+       
         return NodeState.SUCCESS;
-
     }
 }
