@@ -14,7 +14,7 @@ public class MemSequnceNode : Node
 
     public override NodeState ParticularTick(Tick tick)
     {
-        int startChildNr =  (int)tick.Board.GetValue("runningChild", _id);
+        int startChildNr =   (tick.Board.GetValue("runningChild", _id) == null) ? 0 : (int)tick.Board.GetValue("runningChild", _id);
         for (int i = startChildNr; i < _children.Length; i++)
         {
             NodeState status = _children[i].Execute(tick);
