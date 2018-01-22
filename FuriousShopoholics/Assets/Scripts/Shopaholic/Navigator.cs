@@ -83,7 +83,7 @@ public class Navigator
     {
         Vector3 front = _transform.forward;
         Vector3 playerPos = _player.GetMovingTransform().position;
-        float angle = Vector3.Angle(front, playerPos);
+        float angle = Mathf.Abs(Vector3.Angle(front, playerPos));
         float distance = Mathf.Abs((playerPos - _transform.position).sqrMagnitude);
         if(distance < _settings.SmellDistance)
         {
