@@ -12,20 +12,18 @@ public class Navigator
     private Transform _transform = null;
 
     private Player _player;
-    private BehaviorHandler _behaviorHandler = null;
 
     private Shopaholic _shopaholicToFollow = null;
     private Vector3 _playerLastPosition = Vector3.zero;
 
 
     [Inject]
-    public Navigator(Settings settings, NavMeshAgent meshAgent, Transform transform, Player player, BehaviorHandler behaviorHandler)
+    public Navigator(Settings settings, NavMeshAgent meshAgent, Transform transform, Player player)
     {
         _settings = settings;
         _meshAgent = meshAgent;
         _player = player;
         _transform = transform;
-        _behaviorHandler = behaviorHandler;
 
         return;
     }

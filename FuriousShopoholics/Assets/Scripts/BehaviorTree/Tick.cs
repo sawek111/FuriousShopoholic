@@ -26,6 +26,11 @@ public class Tick
         set { _target = value; }
     }
 
+    public object Tree
+    {
+        get { return _tree; }
+    }
+
     public BlackBoard Board
     {
         get { return _board; }

@@ -8,8 +8,6 @@ public class BehaviorHandler : IInitializable
 
     private AnimatorHandler _animatorHandler = null;
 
-    private bool _isFollowing = false;
-
     [Inject]
     public BehaviorHandler(AnimatorHandler  animatorHandler)
     {
