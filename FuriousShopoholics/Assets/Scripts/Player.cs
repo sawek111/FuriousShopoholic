@@ -31,7 +31,7 @@ public class Player : MonoBehaviour
 
     public Transform GetMovingTransform()
     {
-        return _transform;
+        return transform;
     }
 
     public void RemoveHealth(int value)
