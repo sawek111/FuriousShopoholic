@@ -34,6 +34,14 @@ public static class Utils
         }
     }
 
+    public static Vector3 GetRandomPositionOnMap()
+    {
+        float x = Random.Range(-40f, 40f);
+        float z = Random.Range(-40f, 40f);
+
+        return GetVector(x,0f,z);
+    }
+
     public static Vector3 GetVector(float x, float y, float z)
     {
         Vector3 vector = Vector3.zero;

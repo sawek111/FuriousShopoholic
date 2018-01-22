@@ -34,11 +34,9 @@ public enum MemoryKeys
 
 public enum ShopaholicAnimations
 {
-    Idle,
     Running,
     Attack,
     Agony,
-    Escape,
     Die
 }
 
