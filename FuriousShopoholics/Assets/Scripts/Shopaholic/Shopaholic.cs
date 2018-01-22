@@ -178,7 +178,6 @@ public class Shopaholic : MonoBehaviour
     {
         if (!_healthHandler.IsDead())
         {
-            Debug.LogWarning("Die()");
             _healthHandler.Die();
             _behaviorHandler.Die();
         }

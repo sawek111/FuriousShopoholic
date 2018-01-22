@@ -15,7 +15,6 @@ public class AttackPlayer : ShopaholicBTLeaf
             if(_shopaholic.GetAttackProgress() > 0.2f)
             {
                 _shopaholic.PunchPlayer();
-                Debug.LogWarning("Punch");
             }
             _timer = 0.0f;
         }
