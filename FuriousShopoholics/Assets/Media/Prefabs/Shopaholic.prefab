@@ -2776,14 +2776,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings:
     NavMeshAgent: {fileID: 195496868056626008}
-    Transform: {fileID: 4400039570611168}
+    Transform: {fileID: 4109910556685086}
     Animator: {fileID: 95931320541637684}
     HealthSettings:
       MaxHealthPoints: 100
     NavigatorSettings:
       DetectionDistance: 20
-      CloseDistance: 0.5
-      DetectionAngle: 20
+      SmellDistance: 15
+      CloseDistance: 1.5
+      DetectionAngle: 120
 --- !u!114 &114372590277674716
 MonoBehaviour:
   m_ObjectHideFlags: 1
