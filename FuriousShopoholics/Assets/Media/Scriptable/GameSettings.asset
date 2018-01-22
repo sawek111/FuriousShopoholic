@@ -18,4 +18,4 @@ MonoBehaviour:
     ShopaholicPrefab: {fileID: 1515603725673892, guid: 9efbed0bab076d14291fea9912e448f9,
       type: 2}
     ShopaholicsManagerSettings:
-      ShopaholicsStartPool: 10
+      ShopaholicsStartPool: 5
