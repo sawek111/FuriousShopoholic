@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
+    private const int MAX_STAMINA = 150;
+
     [SerializeField] private Transform _transform = null;
     [SerializeField] private AudioSource _source = null;
 
@@ -13,7 +15,7 @@ public class Player : MonoBehaviour
     private bool _isAttacking = false;
     private bool _wantAttack = false;
 
-    private int _stamina = 100;
+    private float _stamina = MAX_STAMINA;
 
     private int health = 100;
 
@@ -79,6 +81,7 @@ public class Player : MonoBehaviour
                     _source.PlayOneShot(_clipToPlay);
                 }
                 _isAttacking = true;
+                _stamina-= 0.5f;
                  return;
             }
         }
@@ -99,7 +102,7 @@ public class Player : MonoBehaviour
         {
             return true;
         }
-        else if(!_isAttacking && _stamina > 20)
+        else if(!_isAttacking && _stamina > MAX_STAMINA/5)
         {
             return true;
         }
@@ -109,9 +112,9 @@ public class Player : MonoBehaviour
 
     private void RegenrateStamina()
     {
-        if (_stamina < 100)
+        if (_stamina < MAX_STAMINA)
         {
-            _stamina++;
+            _stamina += 0.5f;
         }
 
         return; ;
