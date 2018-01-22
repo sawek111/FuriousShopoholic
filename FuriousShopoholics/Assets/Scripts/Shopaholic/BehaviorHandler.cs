@@ -37,7 +37,7 @@ public class BehaviorHandler : IInitializable
 
     public void FeelAgony()
     {
-        _animatorHandler.SetAnimation(ShopaholicAnimations.Agony);
+        _animatorHandler.SetAnimation(ShopaholicAnimations.Agony,true);
         return;
     }
 
