@@ -19,3 +19,5 @@ MonoBehaviour:
       type: 2}
     ShopaholicsManagerSettings:
       ShopaholicsStartPool: 5
+    MenuPanelPrefab: {fileID: 1572341204936456, guid: bfc5349b6ead9de4c9cc27d28b7b31e4,
+      type: 2}

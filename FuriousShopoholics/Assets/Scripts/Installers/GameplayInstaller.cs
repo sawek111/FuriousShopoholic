@@ -8,6 +8,8 @@ public class GameplayInstaller : MonoInstaller<GameplayInstaller>
 
     public override void InstallBindings()
     {
+        Container.Bind<HealthPanel>().FromComponentInNewPrefab(_settings.MenuPanelPrefab).AsSingle().NonLazy();
+
         Container.BindMemoryPool<Shopaholic, Shopaholic.Pool>()
         .FromSubContainerResolve()
         .ByNewPrefab(_settings.ShopaholicPrefab)
@@ -23,5 +25,7 @@ public class GameplayInstaller : MonoInstaller<GameplayInstaller>
     {
         public GameObject ShopaholicPrefab;
         public ShopaholicsManager.Settings ShopaholicsManagerSettings;
+
+        public GameObject MenuPanelPrefab;
     }
 }

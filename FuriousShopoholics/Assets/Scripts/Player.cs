@@ -17,6 +17,11 @@ public class Player : MonoBehaviour
 
     private int health = 100;
 
+    public int Health
+    {
+        get { return health; }
+    }
+
     void Update()
     {
         UpdateWantAttack();
