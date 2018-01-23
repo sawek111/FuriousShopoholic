@@ -7,15 +7,12 @@ public class Navigator
 {
     private Settings _settings = null;
 
+    private Player _player;
 
     private NavMeshAgent _meshAgent = null;
     private Transform _transform = null;
 
-    private Player _player;
-
     private Shopaholic _shopaholicToFollow = null;
-    private Vector3 _playerLastPosition = Vector3.zero;
-
 
     [Inject]
     public Navigator(Settings settings, NavMeshAgent meshAgent, Transform transform, Player player)
@@ -62,6 +59,8 @@ public class Navigator
                 break;
             }
         }
+
+        return;
     }
 
     public float GetRemainingDistance()
@@ -100,7 +99,6 @@ public class Navigator
     public void FollowPlayer()
     {
         _meshAgent.SetDestination(_player.GetMovingTransform().position);
-        _playerLastPosition = _player.GetMovingTransform().position;
         _shopaholicToFollow = null;
 
         return;

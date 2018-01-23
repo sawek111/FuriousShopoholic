@@ -9,13 +9,13 @@ public class MenuInstaller : MonoInstaller<MenuInstaller>
 
     public override void InstallBindings()
     {
-        Container.Bind<MenuPanel>().FromComponentInNewPrefab(_settings._menuPanelPrefab).AsSingle().NonLazy();
+        Container.Bind<MenuPanel>().FromComponentInNewPrefab(_settings.MenuPanelPrefab).AsSingle().NonLazy();
         return;
     }
 
     [Serializable]
     public class Settings
     {
-        public GameObject _menuPanelPrefab;
+        public GameObject MenuPanelPrefab;
     }
 }

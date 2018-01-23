@@ -10,7 +10,6 @@ public class Escape : ShopaholicBTLeaf
         {
             if(_shopaholic.IsFarFromPlayer())
             {
-                Debug.LogWarning("Escaped");
                 return NodeState.SUCCESS;
             }
             _shopaholic.MoveRandomly();

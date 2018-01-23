@@ -9,8 +9,8 @@ public class CanSeePlayer : ShopaholicBTLeaf
         if(_shopaholic.CanSeePlayer())
         {
             return NodeState.SUCCESS;
-
         }
+
         return NodeState.FAILURE;
     }
 }

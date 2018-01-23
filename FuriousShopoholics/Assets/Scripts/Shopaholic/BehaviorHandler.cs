@@ -28,11 +28,13 @@ public class BehaviorHandler : IInitializable
     public void Initialize()
     {
         CreateTree();
+        return;
     }
 
     public void Idle()
     {
         _animatorHandler.StopAnimations();
+        return;
     }
 
     public void FeelAgony()
@@ -56,11 +58,7 @@ public class BehaviorHandler : IInitializable
     public void AttackPlayer()
     {
         _animatorHandler.SetAnimation(ShopaholicAnimations.Attack, true);
-    }
-
-    public bool IsAttacking()
-    {
-        return _animatorHandler.IsState(ShopaholicAnimations.Attack);
+        return;
     }
 
     public float GetAttackProgress()
@@ -124,5 +122,7 @@ public class BehaviorHandler : IInitializable
         );
 
         _tree = new BehaviorTree(root);
+
+        return;
     }
 }

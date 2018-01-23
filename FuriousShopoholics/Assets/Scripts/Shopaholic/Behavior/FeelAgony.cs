@@ -5,6 +5,7 @@ using UnityEngine;
 public class FeelAgony : ShopaholicBTLeaf
 {
     private int counter;
+
     public override NodeState ParticularTick(Tick tick)
     {
         _shopaholic.FeelAgony();

@@ -7,7 +7,6 @@ public class GatherShopaholics : ShopaholicBTLeaf
         if (_shopaholic.FollowingCount >= 3)
         {
             _shopaholic.RegenerateHealth();
-            Debug.Log("Team completed");
             return NodeState.SUCCESS;
         }
 

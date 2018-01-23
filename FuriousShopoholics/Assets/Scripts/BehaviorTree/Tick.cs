@@ -57,7 +57,7 @@ public class Tick
 
     public void OpenNode(Node node)
     {
-        //On create
+        return;
     }
 
 
@@ -80,7 +80,7 @@ public class Tick
 
     public void ExitNode(Node node)
     {
-        //On Exit
+        return;
     }
 
 }

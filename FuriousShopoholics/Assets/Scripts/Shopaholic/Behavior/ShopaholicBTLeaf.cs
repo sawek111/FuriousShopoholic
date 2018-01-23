@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System;
 
 public class ShopaholicBTLeaf : Node
 {
@@ -11,7 +9,7 @@ public class ShopaholicBTLeaf : Node
         _shopaholic = tick.Target as Shopaholic;
         if(_shopaholic == null)
         {
-            Debug.LogError("Sth does not working + " + this.ToString());
+            throw new Exception("Is not shopaholic");
         }
 
         return;

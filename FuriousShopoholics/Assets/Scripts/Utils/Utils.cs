@@ -32,6 +32,8 @@ public static class Utils
         {
             arrayCopy[i] = existingArray[i]; 
         }
+
+        return;
     }
 
     public static Vector3 GetRandomPositionOnMap()

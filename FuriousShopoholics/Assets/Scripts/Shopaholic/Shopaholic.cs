@@ -81,6 +81,7 @@ public class Shopaholic : MonoBehaviour
     {
         _navigator.BeCalled(callingShopaholic);
         _behaviorHandler.Run();
+
         return;
     }
 
@@ -93,6 +94,8 @@ public class Shopaholic : MonoBehaviour
     {
         _behaviorHandler.Run();
         _navigator.RunTowards(transform.position);
+
+        return;
     }
 
     public bool IsFarFromPlayer()
@@ -130,11 +133,6 @@ public class Shopaholic : MonoBehaviour
     {
         _player.RemoveHealth(15);
         return;
-    }
-
-    public bool IsAttacking()
-    {
-        return _behaviorHandler.IsAttacking();
     }
 
     public void AttackPlayer()

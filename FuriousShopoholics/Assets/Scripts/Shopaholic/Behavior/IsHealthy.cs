@@ -11,7 +11,7 @@ public class IsNotHealthy : ShopaholicBTLeaf
         {
             return NodeState.FAILURE;
         }
+
         return NodeState.SUCCESS;
     }
-
 }

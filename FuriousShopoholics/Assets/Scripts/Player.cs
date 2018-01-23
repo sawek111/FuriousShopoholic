@@ -7,9 +7,7 @@ public class Player : MonoBehaviour
 {
     private const int MAX_STAMINA = 150;
 
-    [SerializeField] private Transform _transform = null;
     [SerializeField] private AudioSource _source = null;
-
     [SerializeField] private AudioClip _clipToPlay = null;
 
     private bool _isAttacking = false;
@@ -46,7 +44,7 @@ public class Player : MonoBehaviour
         health -= value;
         if(health <= 0)
         {
-            //TODO fix it....
+            //TODO assign it to the GameManager
             SceneManager.LoadScene("Menu");
         }
 
@@ -117,6 +115,6 @@ public class Player : MonoBehaviour
             _stamina += 0.5f;
         }
 
-        return; ;
+        return;
     }
 }
